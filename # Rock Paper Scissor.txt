@@ -1,0 +1,110 @@
+#Player vs Computer
+
+import random
+  
+name1 = input("Enter your name: ")
+print(f"Hello {name1}") 
+
+while True:
+
+  def RPS():
+    player_choice = input("Enter your selection (Rock, Paper, Scissor): ")
+    option = ["Rock", "Paper", "Scissor"]
+    computer_choice = random.choice(option)
+  
+    choices = {"Player": player_choice, "Computer": computer_choice}
+    
+    return(choices)
+  
+  play = RPS()
+  p_choice = (play["Player"])
+  c_choice = (play["Computer"])
+  print(f"You chose {p_choice}, Computer chose {c_choice}")
+  
+  def who_won():
+    if p_choice == c_choice:
+      return "It's a TIE"
+    elif p_choice == "Rock":
+      if c_choice == "Scissor":
+        return "Rock smashes Scissor, You WIN!"
+      else:
+        return "Paper covers Rock, You LOSE!"
+    elif p_choice == "Scissor":
+      if c_choice == "Rock":
+        return "Rock smashes Scissor, You LOSE!"
+      else:
+        return "Scissor cuts Paper, You WIN!"  
+    elif p_choice == "Paper":
+      if c_choice == "Rock":
+        return "Paper covers Rock, You WIN!"
+      else:
+        return "Scissor cuts Paper, You LOSE!"  
+  
+  result = who_won()
+  print(result)
+
+  rerun = input("Do you want to play again? (Y/N): ")
+  if rerun != "Y":
+    break
+  
+print("Have a good day")
+
+----------------------------------------------------------------------------
+#MY CODE - 2 players input
+
+import sys
+
+print("Welcome to the game of Rock Paper Scissors!")
+checklist = ['rock', 'paper', 'scissors']
+max_attempts = 3
+
+
+def inputFirst():
+    for i in range(max_attempts + 1):
+        if i != 3:
+            input1 = input("Enter input for Player 1: ")
+            i1l = input1.lower()
+            if i1l in checklist:
+                return i1l
+            else:
+                print(f"Please have a correct input for Player 1. Attempts left: {max_attempts - i - 1}")
+        else:
+            print("Incorrect inputs. Game Over")
+            sys.exit(0)
+
+def inputSecond():
+    for j in range(max_attempts + 1):
+        if j != 3:
+            input2 = input("Enter input for Player 2: ")
+            i2l = input2.lower()
+            if i2l in checklist:
+                return i2l
+            else:
+                print(f"Please have a correct input for Player 2. Attempts left: {max_attempts - j - 1}")
+        else:
+            print("Incorrect inputs. Game Over")
+            sys.exit(0)
+
+
+def checkInputs(i1l, i2l):
+    if i1l == i2l:
+        print("No result. Play again!")
+    elif (i1l == 'rock' and i2l == 'paper') or (
+            i1l == 'paper' and i2l == 'scissors') or i1l == 'scissors' and i2l == 'rock':
+        print("Player 2 wins!")
+    else:
+        print("Player 1 wins!")
+
+while True:
+    i1l = inputFirst()
+    i2l = inputSecond()
+
+    checkInputs(i1l,i2l)
+    playAgain = input("Would you like to play again? (Yes/No): ")
+    if playAgain.lower() == 'yes' or playAgain.lower() == 'y':
+        continue
+    else:
+        print("Thank you for playing!")
+    break
+
+
